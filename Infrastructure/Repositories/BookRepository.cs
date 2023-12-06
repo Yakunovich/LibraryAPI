@@ -51,23 +51,20 @@ namespace Infrastructure.Repositories
         {
             var result = await _context.Books
                 .FirstOrDefaultAsync(b => b.Id == book.Id);
+            if (result == null)
+                return default;
 
-            if (result != null)
-            {
-                result.Author = book.Author;
-                result.Description = book.Description;
-                result.TimeWhenBookMustBeReturned = book.TimeWhenBookMustBeReturned;
-                result.TimeWhenBookWasTaken = book.TimeWhenBookWasTaken;
-                result.Genre = book.Genre;
-                result.ISBN = book.ISBN;
-                result.Name = book.Name;
+            result.Author = book.Author;
+            result.Description = book.Description;
+            result.TimeWhenBookMustBeReturned = book.TimeWhenBookMustBeReturned;
+            result.TimeWhenBookWasTaken = book.TimeWhenBookWasTaken;
+            result.Genre = book.Genre;
+            result.ISBN = book.ISBN;
+            result.Name = book.Name;
 
-                await _context.SaveChangesAsync();
+            await _context.SaveChangesAsync();
+            return result;
 
-                return result;
-
-            }
-            return null;
         }
 
     }

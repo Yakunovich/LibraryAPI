@@ -7,14 +7,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Features\Books\Command\Update\" />
-    <Folder Include="Features\Books\Command\Delete\" />
-    <Folder Include="Features\Books\Queries\GetAll\" />
-    <Folder Include="Features\Books\Queries\GetById\" />
-    <Folder Include="Features\Books\Queries\GetByISBN\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <PackageReference Include="AutoMapper" Version="12.0.1" />
     <PackageReference Include="MediatR" Version="12.2.0" />
   </ItemGroup>

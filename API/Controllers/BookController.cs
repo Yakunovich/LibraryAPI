@@ -1,4 +1,9 @@
 ﻿using Application.Features.Books.Command.Add;
+using Application.Features.Books.Command.Delete;
+using Application.Features.Books.Command.Update;
+using Application.Features.Books.Queries.GetAll;
+using Application.Features.Books.Queries.GetById;
+using Application.Features.Books.Queries.GetByISBN;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
@@ -14,50 +19,42 @@ namespace API.Controllers
         {
             _mediator = mediator;
         }
-        //[HttpGet]
-        //public async Task<IActionResult> GetAllBooks()
-        //{
-        //    var query = new GetAllBooksQuery();
-        //    var result = await _mediator.Send(query);
-        //    return Ok(result);
-        //}
-        //[HttpGet("{id}")]
-        //public async Task<IActionResult> GetBook(int id)
-        //{
-        //    var query = new GetBookByIdQuery(id);
-        //    var result = await _mediator.Send(query);
-        //    return Ok(result);
-        //}
-        //[HttpGet("{ISBN}")]
-        //public async Task<IActionResult> GetBookByISBN(string ISBN)
-        //{
-        //    var Books = await _context.Books.ToListAsync();
-        //    if (Books == null) { return NotFound(); }
-
-        //    return Ok(Books);
-        //}
+        [HttpGet]
+        public async Task<IActionResult> GetAllBooks()
+        {
+            var result = await _mediator.Send(new GetAllBooksRequest());
+            return Ok(result);
+        }
+        [HttpGet("{id}")]
+        public async Task<IActionResult> GetBook([FromRoute] int id)
+        {
+            var result = await _mediator.Send(new GetBookByIdRequest(id));
+            return result == null ? NotFound() : Ok(result);
+        }
+        [HttpGet("GetByISBN/{ISBN}")]
+        public async Task<IActionResult> GetBookByISBN([FromRoute] string ISBN)
+        {
+            var result = await _mediator.Send(new GetBookByISBNRequest(ISBN));
+            return result == null ? NotFound() : Ok(result);
+        }
         [HttpPost]
-        [ProducesResponseType(StatusCodes.Status200OK)]
         public async Task<IActionResult> CreateBook([FromBody] CreateBookRequest command)
         {
             var result = await _mediator.Send(command);
-            return Ok(result);
+            return result == null ? BadRequest() : Ok(result);
         }
-        //[HttpPut]
-        //public async Task<IActionResult> ChangeBook()
-        //{
-        //    var Books = await _context.Books.ToListAsync();
-        //    if (Books == null) { return NotFound(); }
-
-        //    return Ok(Books);
-        //}
-        //[HttpDelete]
-        //public async Task<IActionResult> DeleteBook()
-        //{
-        //    var Books = await _context.Books.ToListAsync();
-        //    if (Books == null) { return NotFound(); }
-
-        //    return Ok(Books);
-        //}
+        [HttpPut("{id}")]
+        public async Task<IActionResult> UpdateBook([FromRoute] int id, [FromBody] UpdateBookRequest command)
+        {
+            command.Id = id;
+            var result = await _mediator.Send(command);
+            return result == null ? NotFound() : Ok(result);
+        }
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> DeleteBook([FromRoute] int id)
+        {
+            var result = await _mediator.Send(new DeleteBookRequest(id));
+            return result == null ? BadRequest() : Ok(result);
+        }
     }
 }
