@@ -8,17 +8,29 @@ namespace Infrastructure.Context
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
             : base(options)
         {
-            //Database.EnsureDeleted();
-            //Database.EnsureCreated();
+            Database.EnsureDeleted();
+            Database.EnsureCreated();
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+
+            modelBuilder.Entity<Book>(entity =>
+            {
+                entity.HasIndex(b => b.ISBN)
+                        .IsUnique();
+
+                entity.Property(b => b.ISBN)
+                        .IsRequired()
+                        .HasMaxLength(13);
+
+            });
+
             modelBuilder.Entity<Book>().HasData(
                 new Book[]
                 {
-                    new Book{Id = 1, Author = "George Lucas", Description = "Episode one", Genre = "Fantazy", ISBN = "123456789", Name = "Star Wars: Phantom Menace", TimeWhenBookWasTaken = DateTime.Now.AddDays(-1), TimeWhenBookMustBeReturned = DateTime.Now.AddDays(1)},
-                    new Book{Id = 2, Author = "George Lucas", Description = "Episode two", Genre = "Fantazy", ISBN = "234567890", Name = "Star Wars: Clone wars", TimeWhenBookWasTaken = DateTime.Now.AddDays(-1), TimeWhenBookMustBeReturned = DateTime.Now.AddDays(1)}
+                    new Book{Id = 1, Author = "George Lucas", Description = "Episode one", Genre = "Fantazy", ISBN = "1234567890123", Name = "Star Wars: Phantom Menace", TimeWhenBookWasTaken = DateTime.Now.AddDays(-1), TimeWhenBookMustBeReturned = DateTime.Now.AddDays(1)},
+                    new Book{Id = 2, Author = "George Lucas", Description = "Episode two", Genre = "Fantazy", ISBN = "1234567890124", Name = "Star Wars: Clone wars", TimeWhenBookWasTaken = DateTime.Now.AddDays(-1), TimeWhenBookMustBeReturned = DateTime.Now.AddDays(1)}
                 });
         }
 
