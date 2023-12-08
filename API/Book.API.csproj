@@ -18,9 +18,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Application\Application.csproj" />
-    <ProjectReference Include="..\Core\Core.csproj" />
-    <ProjectReference Include="..\Infrastructure\Infrastructure.csproj" />
+    <ProjectReference Include="..\Application\Book.Application.csproj" />
+    <ProjectReference Include="..\Core\Book.Core.csproj" />
+    <ProjectReference Include="..\Infrastructure\Book.Infrastructure.csproj" />
   </ItemGroup>
 
 </Project>

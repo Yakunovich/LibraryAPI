@@ -3,13 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.7.34221.43
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Core", "Core\Core.csproj", "{F4302FDD-2FED-409E-ACC8-AF60740AA413}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Book.Core", "Core\Book.Core.csproj", "{F4302FDD-2FED-409E-ACC8-AF60740AA413}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Infrastructure", "Infrastructure\Infrastructure.csproj", "{78C39297-6FEC-4A51-ADE6-9F53D514FA3F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Book.Infrastructure", "Infrastructure\Book.Infrastructure.csproj", "{78C39297-6FEC-4A51-ADE6-9F53D514FA3F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Application", "Application\Application.csproj", "{9EC69F93-1137-4F97-8BD0-E4D952DB07C4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Book.Application", "Application\Book.Application.csproj", "{9EC69F93-1137-4F97-8BD0-E4D952DB07C4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "API", "API\API.csproj", "{31A572D7-318D-4695-9E70-BBAE5DF518AD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Book.API", "API\Book.API.csproj", "{31A572D7-318D-4695-9E70-BBAE5DF518AD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

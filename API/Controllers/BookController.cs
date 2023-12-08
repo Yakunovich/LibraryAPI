@@ -14,10 +14,11 @@ namespace API.Controllers
     public class BooksController : ControllerBase
     {
         private readonly IMediator _mediator;
-
-        public BooksController(IMediator mediator)
+        private readonly ILogger<BooksController> _logger;
+        public BooksController(IMediator mediator, ILogger<BooksController> logger)
         {
             _mediator = mediator;
+            _logger = logger;
         }
         [HttpGet]
         public async Task<IActionResult> GetAllBooks()
