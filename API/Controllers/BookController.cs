@@ -5,6 +5,7 @@ using Application.Features.Books.Queries.GetAll;
 using Application.Features.Books.Queries.GetById;
 using Application.Features.Books.Queries.GetByISBN;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace API.Controllers
@@ -20,6 +21,7 @@ namespace API.Controllers
             _mediator = mediator;
             _logger = logger;
         }
+        [Authorize]
         [HttpGet]
         public async Task<IActionResult> GetAllBooks()
         {

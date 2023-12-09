@@ -3,9 +3,9 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Infrastructure.Context
 {
-    public class ApplicationDbContext : DbContext, IApplicationDbContext
+    public class BookDbContext : DbContext, IBookDbContext
     {
-        public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
+        public BookDbContext(DbContextOptions<BookDbContext> options)
             : base(options)
         {
             Database.EnsureDeleted();

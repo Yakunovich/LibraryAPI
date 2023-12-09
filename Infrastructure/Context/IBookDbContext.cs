@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Infrastructure.Context
 {
-    public interface IApplicationDbContext
+    public interface IBookDbContext
     {
         DbSet<Book> Books { get; set; }
         Task<int> SaveChangesAsync();

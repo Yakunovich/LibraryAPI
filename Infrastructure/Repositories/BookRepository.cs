@@ -8,9 +8,9 @@ namespace Infrastructure.Repositories
 
     public class BookRepository : IBookRepository
     {
-        private readonly IApplicationDbContext _context;
+        private readonly IBookDbContext _context;
 
-        public BookRepository(IApplicationDbContext context)
+        public BookRepository(IBookDbContext context)
         {
             _context = context;
         }
