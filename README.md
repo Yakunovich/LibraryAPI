@@ -14,11 +14,12 @@ Once the Identity.API is running, you can authenticate by sending a POST request
 
 The body of the request should be in JSON format, as shown below:
 
-``json
+```json
 {
   "username": "Admin",
   "password": "Admin"
 }
+```
 
 ## Step 3: Use the Token
 
