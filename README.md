@@ -8,7 +8,11 @@ This document provides instructions on how to interact with the Identity.API and
 
 First, you need to start the Identity.API. You can do this by navigating to the directory containing the API and using the appropriate command to start it.
 
-## Step 2: Send a POST Request
+## Step 2: Start Books.API
+
+After starting the Identity.API, you should also start the Books.API. Navigate to the directory containing the Books.API and use the appropriate command to start it.
+
+## Step 3: Send a POST Request
 
 Once the Identity.API is running, you can authenticate by sending a POST request to the following URI: `https://localhost:5002/api/Authenticate/Login`.
 
@@ -21,7 +25,7 @@ The body of the request should be in JSON format, as shown below:
 }
 ```
 
-## Step 3: Use the Token
+## Step 4: Use the Token
 
 After starting the Identity.API, you will receive a token. This token should be used for PUT, POST, and DELETE requests to the Books API at `https://localhost:5003/api/Books`.
 
