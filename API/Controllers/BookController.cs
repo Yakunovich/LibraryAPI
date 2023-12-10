@@ -21,7 +21,7 @@ namespace API.Controllers
             _mediator = mediator;
             _logger = logger;
         }
-        [Authorize]
+
         [HttpGet]
         public async Task<IActionResult> GetAllBooks()
         {
@@ -40,12 +40,16 @@ namespace API.Controllers
             var result = await _mediator.Send(new GetBookByISBNRequest(ISBN));
             return result == null ? NotFound() : Ok(result);
         }
+
+        [Authorize]
         [HttpPost]
         public async Task<IActionResult> CreateBook([FromBody] CreateBookRequest command)
         {
             var result = await _mediator.Send(command);
             return result == null ? BadRequest() : Ok(result);
         }
+
+        [Authorize]
         [HttpPut("{id}")]
         public async Task<IActionResult> UpdateBook([FromRoute] int id, [FromBody] UpdateBookRequest command)
         {
@@ -53,6 +57,8 @@ namespace API.Controllers
             var result = await _mediator.Send(command);
             return result == null ? NotFound() : Ok(result);
         }
+
+        [Authorize]
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteBook([FromRoute] int id)
         {
